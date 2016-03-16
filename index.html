@@ -1,1 +1,72 @@
-<h1>HELLO</h1>
+<!doctype html>
+<html lang="en" ng-app="hack24-dashboard">
+    <head>
+        <meta charset="utf-8">
+        <title>Hack24</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/3.0.0/pusher.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+        
+        <script src="http://www.drewgreenwell.com/scripts/metrojs.js"></script>
+        <link rel="stylesheet" href="http://www.drewgreenwell.com/content/metrojs.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+        <script src="http://cdn.jsdelivr.net/angular.pusher/latest/pusher-angular.min.js"></script>
+               
+        <script src="js/controllers/dashboardController.js"></script>
+    </head>
+    
+    <body ng-controller="DashboardCtrl" style="font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;">
+        <div class="container">
+             <div class="row" style="background-color:white; color: #D72737;">
+                <div class="col-lg-4"><img height="100" src="http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/564e5068e4b052ed0de2b929/1457806707539/?format=400w" alt="Hack24"></div>
+                <div class="col-lg-4" style="text-align:center; font-size:3rem; margin-top:30px;"><p>{{ currentTime }}</p></div>
+                <div class="col-lg-4" style="text-align:center; font-size:3rem; margin-top:30px;"><p>{{timeRemaining}} remaining</p></div>
+            </div>
+        
+            <div class="row" style="color:white; margin-top: 2%; height:90vh;">
+                <div class="col-lg-4">
+                    <div style="background-color: #D72737; text-align:center; font-size:3rem; border-radius: 10px;">
+                        <p>{{'??'}} teams</p>
+                        <p>{{'??'}} hacks</p>
+                    </div>
+                    
+                    <div style="color:black; background-color: #F5F8FA; padding:3%; border-radius: 10px;">
+                        <div style="display:block; width:100%; background-color:white; border: 1px solid #E1E8ED; 
+                                    padding: 2%; color: #292F33;"
+                             ng-repeat="event in events">
+                            <b>{{event.name}}</b>: 
+                            {{event.message}}
+                        </div>
+                    </div>
+                </div>
+
+               <div class="col-lg-8" style="height: 100%;">
+                    <div class="list-tile" style="width:100%;height:100%;margin:0;">
+                        <span class="tile-title">flip list</span>
+                        <ul class="flip-list" data-mode="flip-list" data-delay="2500" style="border-radius: 10px;">
+                            <li class="sq" ng-repeat="team in teams" style="width:28%;height:100px;text-align:center;margin:0 1% 1% 0;">
+                                <div style="background-color:#D72737;font-size:2em;">{{team.name}}</div>
+                                <div style="background-color:#D72737;font-size:1.5em;"">
+                                    ?? Hacks<br />
+                                    ?? teams
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        
+        <script>
+            setTimeout(function() { 
+                    var width = $('.sq').width();
+                    $('.sq').height(width * 0.8 + 'px');
+                    $(".live-tile, .flip-list").not(".exclude").liveTile(); 
+                }, 1000);
+        </script>
+    </body>
+</html>

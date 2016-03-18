@@ -3,14 +3,14 @@ var dashboardApp = angular.module('hack24-dashboard', ['pusher-angular']);
 dashboardApp.factory('ChallengesService', function() {
   return function() {
     return [
-      { name: 'Cronofy' },
-      { name: 'Blenheim Chalcot' },
-      { name: 'Esendex' },
-      { name: 'Artificial Minds' },
-      { name: 'MHR' },
-      { name: 'Packed Pixels' },
-      { name: 'Pusher' },
-      { name: 'Tech Nottingham' },
+      { name: 'Cronofy', image:'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf6e23b6aa60ad3e53602d/1456434751380/?format=750w'},
+      { name: 'Blenheim Chalcot', height:'80px', image:'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf6f6a2b8dde932f49f1e6/1456435065478/?format=750w'},
+      { name: 'Esendex', height:'60px', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf6fe22fe131a105bf2b3e/1456435191171/?format=750w' },
+      { name: 'Artificial Minds', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf7053d51cd4432a4dae03/1456435301411/?format=750w' },
+      { name: 'MHR', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56deee6eab48def3179e4d2d/1457450634906/?format=500w' },
+      { name: 'Packed Pixels', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf7107859fd0aad5a1e1be/1456435470162/?format=750w' },
+      { name: 'Pusher', height:'80px', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56cf71faf850828b7a3878f7/1456435720688/?format=750w' },
+      { name: 'Tech Nottingham', height:'90px', image: 'http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56e40751ab48de1dc3bc74e4/1457784685204/?format=500w' }
     ];
   }
 });
@@ -30,7 +30,7 @@ dashboardApp.controller('DashboardCtrl', ['$scope', '$http', '$interval', '$push
       $scope.totalTeams = teams.length
     })
 
-    $scope.teams = challengesService();
+    $scope.sponsors = challengesService();
 
     $interval(function() {
       $scope.currentTime = moment().format('ddd HH:mm');
@@ -42,8 +42,9 @@ dashboardApp.controller('DashboardCtrl', ['$scope', '$http', '$interval', '$push
     var channel = pusher.subscribe('api_events');
     channel.bind('teams_add',
       function(data) {
-        $scope.events.push(data);
-        console.log(data);
+        var event = {timestamp: moment().format('HH:mm') , data: data.message};
+        $scope.events.push(event);
+        console.log(event);
       }
     );
   }]);
@@ -59,3 +60,9 @@ function getDateDiff() {
   //return hours + ":" + minutes;
   return diffe.humanize();
 }
+
+dashboardApp.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});

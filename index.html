@@ -16,12 +16,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
         <script src="http://cdn.jsdelivr.net/angular.pusher/latest/pusher-angular.min.js"></script>
                
+        <script src="js/yayson.js"></script>
         <script src="js/controllers/dashboardController.js"></script>
     </head>
     
-    <body ng-controller="DashboardCtrl" style="font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;">
-        <div class="container">
-             <div class="row" style="background-color:white; color: #D72737;">
+    <body ng-controller="DashboardCtrl" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; background-image:url('http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/56e14557d51cd478078205ae/1457603978946/Council+House+low+res.jpg'); background-size:cover">
+        <div class="container" style="">
+             <div class="row" style="background-color:white; color: #D72737; background-color:rgba(255, 255, 255, 0.5);">
                 <div class="col-lg-4"><img height="100" src="http://static1.squarespace.com/static/54f1b189e4b0f6df27b46455/t/564e5068e4b052ed0de2b929/1457806707539/?format=400w" alt="Hack24"></div>
                 <div class="col-lg-4" style="text-align:center; font-size:3rem; margin-top:30px;"><p>{{ currentTime }}</p></div>
                 <div class="col-lg-4" style="text-align:center; font-size:3rem; margin-top:30px;"><p>{{timeRemaining}} remaining</p></div>
@@ -30,16 +31,15 @@
             <div class="row" style="color:white; margin-top: 2%; height:90vh;">
                 <div class="col-lg-4">
                     <div style="background-color: #D72737; text-align:center; font-size:3rem; border-radius: 10px;">
-                        <p>{{'??'}} teams</p>
-                        <p>{{'??'}} hacks</p>
+                        <p>{{totalTeams}} teams</p>
                     </div>
                     
-                    <div style="color:black; background-color: #F5F8FA; padding:3%; border-radius: 10px;">
+                    <div style="color:black; background-color: #F5F8FA; padding:3%; border-radius: 10px; max-height:470px; overflow-y:hidden;">
                         <div style="display:block; width:100%; background-color:white; border: 1px solid #E1E8ED; 
                                     padding: 2%; color: #292F33;"
-                             ng-repeat="event in events">
-                            <b>{{event.name}}</b>: 
-                            {{event.message}}
+                             ng-repeat="event in events | reverse">
+                            <b>{{event.timestamp}}</b>: 
+                            {{event.data}}
                         </div>
                     </div>
                 </div>
@@ -48,11 +48,13 @@
                     <div class="list-tile" style="width:100%;height:100%;margin:0;">
                         <span class="tile-title">flip list</span>
                         <ul class="flip-list" data-mode="flip-list" data-delay="2500" style="border-radius: 10px;">
-                            <li class="sq" ng-repeat="team in teams" style="width:28%;height:100px;text-align:center;margin:0 1% 1% 0;">
-                                <div style="background-color:#D72737;font-size:2em;">{{team.name}}</div>
-                                <div style="background-color:#D72737;font-size:1.5em;"">
-                                    ?? Hacks<br />
-                                    ?? teams
+                            <li class="sq" ng-repeat="sponsor in sponsors" style="width:28%;height:100px;text-align:center;margin:0 1% 1% 0;">
+                                <div style="background-color:#D72737;font-size:2em;">
+                                    <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>{{sponsor.name}}
+                                </div>
+                                
+                                <div style="background-color:#fff;font-size:1.5em;"">
+                                    <span style="display: inline-block; height: 100%; vertical-align: middle;"></span><img ng-style="{'height':sponsor.height !== null ? sponsor.height : ''}" ng-src="{{sponsor.image}}" />
                                 </div>
                             </li>
                         </ul>

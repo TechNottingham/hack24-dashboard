@@ -56,9 +56,9 @@ function getDateDiff() {
 
   var hours = Math.floor(diffe / (60 * 60 * 1000));
   var minutes = Math.floor((diffe / (60 * 1000)) % 60) + 1;
-
+  return humanizeDuration(diffe);
   //return hours + ":" + minutes;
-  return diffe.humanize();
+  //return diffe.humanize();
 }
 
 dashboardApp.filter('reverse', function() {

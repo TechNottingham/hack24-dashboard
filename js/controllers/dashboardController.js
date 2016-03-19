@@ -37,7 +37,7 @@ dashboardApp.controller('DashboardCtrl', ['$scope', '$http', '$interval', '$push
       $scope.timeRemaining = getDateDiff();
     }, 1000);
 
-    var client = new Pusher('7ca76e24461e7363e0fd', { cluster: 'eu' });
+    var client = new Pusher('ab3012cb643ea1541144', { cluster: 'eu' });
     var pusher = $pusher(client);
     var channel = pusher.subscribe('api_events');
     channel.bind('teams_add',

@@ -11,6 +11,7 @@ GH_PAGES_BRANCH=gh-pages
 
 (
   cd dist
+  cp ../CNAME .
 
   git init
   git checkout --orphan $GH_PAGES_BRANCH

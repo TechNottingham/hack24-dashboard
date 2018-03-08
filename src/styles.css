@@ -99,6 +99,24 @@ html, body {
 .sponsors span {
   display: none;
 }
+.sponsors::after{
+  position: absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content:
+    url('img/sponsors/A-MHR.png')
+    url('img/sponsors/B-Esendex.png')
+    url('img/sponsors/C-Experian.png')
+    url('img/sponsors/D-ThomsonReuters.png')
+    url('img/sponsors/E-eLife.png')
+    url('img/sponsors/F-Microsoft.png')
+    url('img/sponsors/G-Unidays.png')
+    url('img/sponsors/H-CapitalOne.png')
+    url('img/sponsors/I-Starling.png')
+    url('img/sponsors/J-Cordius.png')
+    url('img/sponsors/K-Stkrs.png')
+    url('img/sponsors/L-GitHub.png')
+    url('img/sponsors/M-HeartInternet.png')
+    url('img/sponsors/N-Liberis.png');
+}
 
 
 .sponsor_mhr {

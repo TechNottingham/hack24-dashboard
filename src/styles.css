@@ -6,12 +6,14 @@ html, body {
 }
 
 .wrapper {
+  /* border: 1px dotted red; */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
 .wrapper>div {
+  /* border: 1px dashed white; */
   padding: 0;
   margin: 0;
 }
@@ -39,6 +41,11 @@ html, body {
   grid-column: 3 / span 4;
   grid-row: 2;
 }
+.sponsors {
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 3;
+}
+
 
 .title {
   background-image: url('img/hack-24-logo-white.png');
@@ -87,3 +94,71 @@ html, body {
   text-overflow: ellipsis;
 }
 
+.sponsors {
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: initial;
+  transition: background-image 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.sponsors span {
+  display: none;
+}
+
+
+.sponsor_mhr {
+  background-image: url('img/sponsors/A-MHR.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_esendex {
+  background-image: url('img/sponsors/B-Esendex.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_experian {
+  background-image: url('img/sponsors/C-Experian.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_tr {
+  background-image: url('img/sponsors/D-ThomsonReuters.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_elife {
+  background-image: url('img/sponsors/E-eLife.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_microsoft {
+  background-image: url('img/sponsors/F-Microsoft.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_unidays {
+  background-image: url('img/sponsors/G-Unidays.png');
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+.sponsor_capitalone {
+  background-image: url('img/sponsors/H-CapitalOne.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_starling {
+  background-image: url('img/sponsors/I-Starling.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_cordius {
+  background-image: url('img/sponsors/J-Cordius.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_stkrs {
+  background-image: url('img/sponsors/K-Stkrs.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_github {
+  background-image: url('img/sponsors/L-GitHub.png');
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+.sponsor_hi {
+  background-image: url('img/sponsors/M-HeartInternet.png');
+  filter: drop-shadow(0 0 10px #000000);
+}
+.sponsor_liberis {
+  background-image: url('img/sponsors/N-Liberis.png');
+  filter: drop-shadow(0 0 10px #000000);
+}

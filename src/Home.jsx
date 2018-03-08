@@ -6,6 +6,7 @@ import Timer from './Timer'
 import Clock from './Clock'
 import WhatsOn from './WhatsOn'
 import WhatsNext from './WhatsNext'
+import SponsorsGallery from './SponsorsGallery'
 
 const agenda = [
   { start: moment('2018-03-07T20:00:00'), end: moment('2018-03-10T09:00:00'), title: 'Countdown to registration' },
@@ -28,6 +29,23 @@ const agenda = [
   { start: moment('2018-03-11T18:00:00'), end: moment('2018-03-11T23:00:00'), title: 'Afterpartay!' }
 ]
 
+const sponsors = [
+  { title: 'MHR', classname: 'sponsor_mhr' },
+  { title: 'Esendex', classname: 'sponsor_esendex' },
+  { title: 'Experian', classname: 'sponsor_experian' },
+  { title: 'Thomson Reuters', classname: 'sponsor_tr' },
+  { title: 'eLife', classname: 'sponsor_elife' },
+  { title: 'Microsoft', classname: 'sponsor_microsoft' },
+  { title: 'UNiDAYS', classname: 'sponsor_unidays' },
+  { title: 'Capital One', classname: 'sponsor_capitalone' },
+  { title: 'Starling', classname: 'sponsor_starling' },
+  { title: 'Cordius', classname: 'sponsor_cordius' },
+  { title: 'Stkrs', classname: 'sponsor_stkrs' },
+  { title: 'GitHub', classname: 'sponsor_github' },
+  { title: 'Heart Internet', classname: 'sponsor_hi' },
+  { title: 'Liberis', classname: 'sponsor_liberis' }
+]
+
 class Home {
   constructor () {
     this.currentTeamsCount = null
@@ -44,7 +62,7 @@ class Home {
   }
 
   updateApiStats () {
-    window.fetch('http://api.hack24.co.uk/teams')
+    window.fetch('//api.hack24.co.uk/teams')
       .then((data) => data.json())
       .then((json) => {
         this.currentTeamsCount = json.data.length
@@ -67,6 +85,7 @@ class Home {
           <div><span>Now:</span> <WhatsOn agenda={agenda} /></div>
           <div><span>Next:</span> <WhatsNext agenda={agenda} /></div>
         </div>
+        <SponsorsGallery sponsors={sponsors} interval={8000} />
       </div>
     )
   }

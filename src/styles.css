@@ -1,0 +1,89 @@
+html, body {
+  font-family: 'Cabin', sans-serif;
+  color: #44A105;
+  text-shadow: 0px 0px 5px black;
+  background-color: #2B2B2B;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.wrapper>div {
+  padding: 0;
+  margin: 0;
+}
+.title {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+.timer {
+  color: #D41C2B;
+  text-shadow: 0px 0px 5px rgb(80, 0, 0);
+  font-family: 'Courier New', Courier, monospace;
+  grid-column: 3 / span 4;
+  grid-row: 1;
+}
+.clock {
+  font-family: 'Courier New', Courier, monospace;
+  grid-column: 1 / span 2;
+  grid-row: 2;
+}
+.teams {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}
+.whatson {
+  grid-column: 3 / span 4;
+  grid-row: 2;
+}
+
+.title {
+  background-image: url('img/hack-24-logo-white.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: contain;
+  -webkit-filter: drop-shadow(0 0 20px #d62b3b);
+  filter: drop-shadow(0 0 10px #d62b3b);
+}
+
+.title>span {
+  display: none;
+}
+
+.timer {
+  text-align: center;
+  font-size: 9vw;
+  vertical-align: middle;
+}
+
+.clock {
+  text-align: center;
+  font-size: 5vw;
+}
+
+.teams {
+  text-align: center;
+  font-size: 4vw;
+}
+.hackers {
+  text-align: center;
+  font-size: 4vw;
+}
+
+.whatson {
+  font-size: 3vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.whatsnext {
+  font-size: 3vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

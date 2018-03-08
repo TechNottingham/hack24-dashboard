@@ -1,8 +1,6 @@
 html, body {
   font-family: 'Cabin', sans-serif;
-  color: #44A105;
-  text-shadow: 0px 0px 5px black;
-  background-color: #2B2B2B;
+  background-color: white;
 }
 
 .wrapper {
@@ -13,7 +11,7 @@ html, body {
   grid-auto-rows: minmax(100px, auto);
 }
 .wrapper>div {
-  /* border: 1px dashed white; */
+  /* border: 1px dashed black; */
   padding: 0;
   margin: 0;
 }
@@ -23,13 +21,12 @@ html, body {
 }
 .timer {
   color: #D41C2B;
-  text-shadow: 0px 0px 5px rgb(80, 0, 0);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Inconsolata', monospace;
   grid-column: 3 / span 4;
   grid-row: 1;
 }
 .clock {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Inconsolata', monospace;
   grid-column: 1 / span 2;
   grid-row: 2;
 }
@@ -39,7 +36,7 @@ html, body {
 }
 .whatson {
   grid-column: 3 / span 4;
-  grid-row: 2;
+  grid-row: 2 / span 2;
 }
 .sponsors {
   grid-column: 1 / span 2;
@@ -48,13 +45,11 @@ html, body {
 
 
 .title {
-  background-image: url('img/hack-24-logo-white.png');
+  background-image: url('img/hack24.png');
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
   background-size: contain;
-  -webkit-filter: drop-shadow(0 0 20px #d62b3b);
-  filter: drop-shadow(0 0 10px #d62b3b);
 }
 
 .title>span {
@@ -87,19 +82,19 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.whatsnext {
-  font-size: 3vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.whatson ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sponsors {
+  background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
   background-size: initial;
-  transition: background-image 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background-image 0.1s ease;
 }
 .sponsors span {
   display: none;
@@ -108,57 +103,43 @@ html, body {
 
 .sponsor_mhr {
   background-image: url('img/sponsors/A-MHR.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_esendex {
   background-image: url('img/sponsors/B-Esendex.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_experian {
   background-image: url('img/sponsors/C-Experian.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_tr {
   background-image: url('img/sponsors/D-ThomsonReuters.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_elife {
   background-image: url('img/sponsors/E-eLife.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_microsoft {
   background-image: url('img/sponsors/F-Microsoft.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_unidays {
   background-image: url('img/sponsors/G-Unidays.png');
-  filter: drop-shadow(0 0 10px #ffffff);
 }
 .sponsor_capitalone {
   background-image: url('img/sponsors/H-CapitalOne.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_starling {
   background-image: url('img/sponsors/I-Starling.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_cordius {
   background-image: url('img/sponsors/J-Cordius.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_stkrs {
   background-image: url('img/sponsors/K-Stkrs.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_github {
   background-image: url('img/sponsors/L-GitHub.png');
-  filter: drop-shadow(0 0 10px #ffffff);
 }
 .sponsor_hi {
   background-image: url('img/sponsors/M-HeartInternet.png');
-  filter: drop-shadow(0 0 10px #000000);
 }
 .sponsor_liberis {
   background-image: url('img/sponsors/N-Liberis.png');
-  filter: drop-shadow(0 0 10px #000000);
 }

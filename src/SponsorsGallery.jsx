@@ -15,13 +15,23 @@ export default class SponsorsGallery {
   rotateSponsor () {
     const nextIndex = this.currentSponsorIndex + 1
     this.currentSponsorIndex = nextIndex === this.sponsors.length ? 0 : nextIndex
+    this.currentSponsor = this.sponsors[this.currentSponsorIndex]
 
-    setTimeout(() => this.rotateSponsor(), this.interval)
+    setTimeout(() => this.hideSponsor(), this.interval)
+
+    m.redraw()
+  }
+
+  hideSponsor () {
+    this.currentSponsor = undefined
+
+    setTimeout(() => this.rotateSponsor(), 300)
+
+    m.redraw()
   }
 
   view (vnode) {
-    const { currentSponsorIndex, sponsors } = this
-    const currentSponsor = sponsors[currentSponsorIndex]
+    const { currentSponsor } = this
     return (
       <div class={`sponsors ${currentSponsor ? currentSponsor.classname : ''}`}>
         <span>sponsors</span>

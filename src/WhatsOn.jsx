@@ -20,12 +20,12 @@ export default class WhatsOn {
     setTimeout(() => this.updateCurrentItems(), 5000)
   }
 
+  renderItems (items) {
+    return items.map((item, index) => <li>{item.title}</li>)
+  }
+
   view (vnode) {
     const { currentItems } = this
-    return (
-      <span>
-        {currentItems.length > 0 && currentItems.map((item) => <span>{item.title}</span>)}
-      </span>
-    )
+    return <ul>{currentItems.length && this.renderItems(currentItems)}</ul>
   }
 }

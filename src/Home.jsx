@@ -82,8 +82,8 @@ class Home {
         <div class='clock'><Clock /></div>
         <div class='teams'><span>{currentTeamsCount === null ? '??' : currentTeamsCount}</span> teams</div>
         <div class='whatson'>
-          <div><span>Now:</span> <WhatsOn agenda={agenda} /></div>
-          <div><span>Next:</span> <WhatsNext agenda={agenda} /></div>
+          <div><WhatsOn agenda={agenda} /></div>
+          <div><em><WhatsNext agenda={agenda} /></em></div>
         </div>
         <SponsorsGallery sponsors={sponsors} interval={8000} />
       </div>

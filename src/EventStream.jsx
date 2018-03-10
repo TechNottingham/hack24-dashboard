@@ -25,8 +25,8 @@ export default class EventStream {
   }
 
   setupStream () {
-    // const ws = new window.WebSocket('ws://hack24-dashboard-server.herokuapp.com')
-    const ws = new window.WebSocket('ws://localhost:1235')
+    const ws = new window.WebSocket('ws://hack24-dashboard-server.herokuapp.com')
+    // const ws = new window.WebSocket('ws://localhost:1235')
     ws.onopen = function () {
       ws.send('message to send')
     }

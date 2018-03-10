@@ -7,6 +7,7 @@ import Clock from './Clock'
 import WhatsOn from './WhatsOn'
 import WhatsNext from './WhatsNext'
 import SponsorsGallery from './SponsorsGallery'
+import EventStream from './EventStream'
 
 const agenda = [
   { start: moment('2018-03-07T20:00:00'), end: moment('2018-03-10T09:00:00'), title: 'Countdown to registration' },
@@ -86,6 +87,7 @@ class Home {
           <div><em><WhatsNext agenda={agenda} /></em></div>
         </div>
         <SponsorsGallery sponsors={sponsors} interval={8000} />
+        <div class='eventstream'><EventStream /></div>
       </div>
     )
   }

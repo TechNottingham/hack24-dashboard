@@ -13,6 +13,7 @@
   "dependencies": {
     "mithril": "^1.1.6",
     "moment": "^2.21.0",
+    "ws": "^5.0.0",
     "yayson": "^2.0.8"
   },
   "devDependencies": {

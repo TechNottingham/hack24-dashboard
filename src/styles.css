@@ -8,7 +8,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: minmax(50px, auto);
 }
 .wrapper>div {
   /* border: 1px dashed black; */
@@ -35,7 +35,11 @@ html, body {
 }
 .sponsors {
   grid-column: 1 / span 2;
-  grid-row: 4 / span 2;
+  grid-row: 4 / span 5;
+}
+.eventstream {
+  grid-column: 3 / span 4;
+  grid-row: 4 / span 5;
 }
 
 
@@ -158,4 +162,56 @@ html, body {
 }
 .sponsor_liberis {
   background-image: url('img/sponsors/N-Liberis.png');
+}
+
+
+.eventstream ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+i.ico {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+.ico:before {
+  color: transparent;
+  content: "__";
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: contain;
+}
+
+.twittericon:before {
+  background-image: url('./img/Twitter_Social_Icon_Circle_Color.svg');
+}
+
+.event {
+  /* border: 1px dotted blue; */
+  height: 3em;
+
+  overflow-y: hidden;
+  text-overflow: clip;
+}
+
+.event.tweet:before {
+  color: transparent;
+  content: "__";
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: contain;
+  background-image: url('./img/Twitter_Social_Icon_Circle_Color.svg');
+  margin-right: .3em;
+}
+
+.event-ts {
+  color: silver;
+  font-style: italic;
 }

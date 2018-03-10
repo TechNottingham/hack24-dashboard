@@ -18,6 +18,8 @@ export default class EventStream {
       this.events.pop()
     }
     this.events.unshift(event)
+
+    m.redraw()
   }
 
   setupStream () {

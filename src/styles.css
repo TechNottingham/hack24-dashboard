@@ -67,7 +67,17 @@ html, body {
   font-family: 'Inconsolata', monospace;
   text-align: center;
   font-size: 5vw;
+  margin-left: -3vw;
 }
+/* .clock>span:before {
+  color: transparent;
+  content: "__";
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: contain;
+  background-image: url('./img/watch.png');
+} */
 
 .teams {
   text-align: center;
@@ -88,6 +98,19 @@ html, body {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+.on-now:before {
+  margin-right: 0.3em;
+  color: transparent;
+  content: "__";
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: contain;
+  background-image: url('./img/point_right.png');
+}
+.on-next {
+  color: rgb(99, 99, 99);
 }
 
 .sponsors {
@@ -209,6 +232,10 @@ i.ico {
   background-size: contain;
   background-image: url('./img/Twitter_Social_Icon_Circle_Color.svg');
   margin-right: .3em;
+}
+
+.event-user {
+  color: #D41C2B;
 }
 
 .event-ts {

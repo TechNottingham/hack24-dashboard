@@ -22,11 +22,11 @@ export default class WhatsNext {
   }
 
   renderItems (items) {
-    return items.slice(0, this.show).map((item, index) => <li>{item.start.format('h:mma')} {item.title}</li>)
+    return items.slice(0, this.show).map((item, index) => <li class='on-next'>{item.start.format('h:mma')} {item.title}</li>)
   }
 
   view (vnode) {
     const { nextItems } = this
-    return <ul>{nextItems && this.renderItems(nextItems)}</ul>
+    return <ul>{nextItems.length > 0 && this.renderItems(nextItems)}</ul>
   }
 }

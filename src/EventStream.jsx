@@ -2,6 +2,8 @@
 import m from 'mithril'
 import moment from 'moment'
 
+const MAX_TWEETS = 10
+
 export default class EventStream {
   oninit () {
     this.events = []
@@ -14,7 +16,7 @@ export default class EventStream {
   }
 
   appendEvent (event) {
-    if (this.events.length > 8) {
+    if (this.events.length > MAX_TWEETS) {
       this.events.pop()
     }
     this.events.unshift(event)
@@ -23,15 +25,15 @@ export default class EventStream {
   }
 
   setupStream () {
-    const ws = new window.WebSocket('ws://hack24-dashboard-server.herokuapp.com')
-    // const ws = new window.WebSocket('ws://localhost:1235')
+    // const ws = new window.WebSocket('ws://hack24-dashboard-server.herokuapp.com')
+    const ws = new window.WebSocket('ws://localhost:1235')
     ws.onopen = function () {
       ws.send('message to send')
     }
     ws.onmessage = (evt) => {
       const event = JSON.parse(evt.data)
       if (event.event !== 'tweet') return
-      event.ts = moment(event.ts)
+      event.ts = moment(event.data.ts)
       this.appendEvent(event)
     }
     ws.onclose = function () {
@@ -49,7 +51,7 @@ export default class EventStream {
       <li class={`event ${tweet.event}`}>
         <span class='event-user'>@{tweet.data.user.screen_name}</span>&nbsp;
         <span class='event-content'>{tweet.data.text}</span>&nbsp;
-        <span class='event-ts'>{tweet.ts.fromNow()}</span>
+        <time class='event-ts' datetime={tweet.ts.toISOString()}>{tweet.ts.fromNow()}</time>
       </li>
     )
   }

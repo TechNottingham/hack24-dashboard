@@ -21,11 +21,11 @@ export default class WhatsOn {
   }
 
   renderItems (items) {
-    return items.map((item, index) => <li>{item.title}</li>)
+    return items.map((item, index) => <li class='on-now'>{item.title}</li>)
   }
 
   view (vnode) {
     const { currentItems } = this
-    return <ul>{currentItems.length && this.renderItems(currentItems)}</ul>
+    return <ul>{currentItems.length > 0 && this.renderItems(currentItems)}</ul>
   }
 }

@@ -7,11 +7,6 @@ const MAX_TWEETS = 10
 export default class EventStream {
   oninit () {
     this.events = []
-    // const codesleuth = { screen_name: 'codesleuth', name: 'Dave', profile_image_url: '' }
-    // this.events = [
-    //   { ts: moment().subtract(10, 'minutes'), event: 'tweet', data: { text: 'Hello world', user: codesleuth } },
-    //   { ts: moment().subtract(9, 'minutes'), event: 'tweet', data: { text: 'Crazy 🐳🐳 long tweet that 🐳🐳 doesnt fit on the screen omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg omg', user: codesleuth } }
-    // ].sort((a, b) => b.ts.valueOf() - a.ts.valueOf())
     this.setupStream()
   }
 
@@ -25,25 +20,40 @@ export default class EventStream {
   }
 
   setupStream () {
-    const ws = new window.WebSocket('ws://hack24-dashboard-server.herokuapp.com')
-    // const ws = new window.WebSocket('ws://localhost:1235')
-    ws.onopen = function () {
-      ws.send('message to send')
-    }
-    ws.onmessage = (evt) => {
-      const event = JSON.parse(evt.data)
-      if (event.event !== 'tweet') return
-      event.ts = moment(event.data.ts)
-      this.appendEvent(event)
-    }
-    ws.onclose = function () {
-      this.ws = undefined
+    function loadPrimus () {
+      return new Promise((resolve) => {
+        const params = new window.URLSearchParams(window.location.search)
+        const streamServer = params.get('server') || 'hack24-dashboard-server.herokuapp.com'
 
-      // Reconnect after 5 seconds
-      setTimeout(() => this.setupStream(), 5000)
+        if (window.Primus) return resolve(streamServer)
+
+        var script = document.createElement('script')
+        script.setAttribute('src', `//${streamServer}/js/primus.min.js`)
+        script.setAttribute('type', 'text/javascript')
+
+        script.onreadystatechange = script.onload = () => resolve(streamServer)
+
+        document.querySelector('head').appendChild(script)
+      })
     }
 
-    this.ws = ws
+    loadPrimus().then((streamServer) => {
+      const primus = window.Primus.connect(`//${streamServer}`)
+
+      primus.on('data', (event) => {
+        if (event.event !== 'tweet') return
+        event.ts = moment(event.data.ts)
+        this.appendEvent(event)
+      })
+
+      primus.on('error', (err) => console.error('primus error', err))
+      primus.on('reconnect', () => console.log('primus is reconnecting'))
+      primus.on('online', () => console.log('primus is online'))
+      primus.on('offline', () => console.log('primus is offline'))
+      primus.on('open', () => console.log('primus is open'))
+      primus.on('close', () => console.log('primus is closed'))
+      primus.on('end', () => console.log('primus is ended'))
+    })
   }
 
   renderTweet (tweet) {
@@ -62,13 +72,17 @@ export default class EventStream {
     }
   }
 
+  sortEvents (events) {
+    return events.sort((a, b) => b.ts.valueOf() - a.ts.valueOf())
+  }
+
   view () {
     const { events } = this
 
     return (
       <div>
         <ul>
-          { events.map((event) => this.renderEvent(event)) }
+          { this.sortEvents(events).map((event) => this.renderEvent(event)) }
         </ul>
       </div>
     )
